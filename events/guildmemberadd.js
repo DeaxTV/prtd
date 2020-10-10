@@ -1,2 +1,2 @@
 const Discord = require('discord.js');
-module
+module.exports
