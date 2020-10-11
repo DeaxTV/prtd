@@ -23,6 +23,7 @@ exports.conf = {
   enabled: true,
   guildOnly: false,
   aliases: [],
+  kategori: 'ayarlar',
   permLevel: 0
 };
 
