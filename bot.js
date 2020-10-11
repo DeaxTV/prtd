@@ -20,7 +20,7 @@ const ytdl = require("ytdl-core");
 
 const app = express();
 app.get("/", (request, response) => {
-  console.log(Date.now() + "KEDI GOZU NEBULASI | KEDI GOZU BULUTUSU");
+  console.log(Date.now() + "PİNG PONG");
   response.sendStatus(200);
 });
 app.listen(process.env.PORT);
