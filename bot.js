@@ -125,12 +125,3 @@ client.on("error", e => {
 });
 
 client.login(ayarlar.token);
-//sa-as
-client.on("message", async (msg, member, guild) => {
-  let i = await db.fetch(`saas_${msg.guild.id}`);
-  if (i === "açık") {
-    if (msg.content.toLowerCase() === "sa") {
-      msg.reply("Aleyküm Selam Hoşgeldin :heart: ");
-    }
-  }
-});

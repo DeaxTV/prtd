@@ -12,6 +12,7 @@ module.exports.conf = {
   enabled: true,
   guildOnly: false,
   aliases: ["commands"],
+  kategori: 'genel',
   permLevel: 0
 };
 
