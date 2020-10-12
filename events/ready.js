@@ -15,7 +15,7 @@ module.exports = client => {
   //online = çevrimiçi
   
   console.log(`                                                                                                                                                                     `)
-  client.user.setActivity(`BURAYA BOTUN OYNUYORU `, { type: "WATCHING"});
+  client.user.setActivity(`Emir321r <3 `, { type: "WATCHING"});
   
   //LISTENING = DİNLİYOR
   //WATCHING = İZLİYOR
