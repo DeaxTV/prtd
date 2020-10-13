@@ -1,27 +1,27 @@
-const Discord = require("discord.js");
-const client = new Discord.Client();
-const ayarlar = require("./ayarlar.json");
-const chalk = require("chalk");
-const moment = require("moment");
-var Jimp = require("jimp");
-const { Client, Util } = require("discord.js");
-const weather = require("weather-js");
-const fs = require("fs");
-const db = require("quick.db");
-const http = require("http");
-const express = require("express");
-require("./util/eventLoader.js")(client);
-const path = require("path");
-const request = require("request");
-const snekfetch = require("snekfetch");
-const queue = new Map();
-const YouTube = require("simple-youtube-api");
-const ytdl = require("ytdl-core");
+const Discord = require("discord.js");//emir321r//emir321r//emir321r//emir321r//emir321r//emir321r//emir321r
+const client = new Discord.Client();//emir321r//emir321r//emir321r//emir321r//emir321r//emir321r//emir321r
+const ayarlar = require("./ayarlar.json");//emir321r//emir321r//emir321r//emir321r//emir321r//emir321r//emir321r
+const chalk = require("chalk");//emir321r//emir321r//emir321r//emir321r//emir321r//emir321r//emir321r
+const moment = require("moment");//emir321r//emir321r//emir321r//emir321r//emir321r//emir321r//emir321r
+var Jimp = require("jimp");//emir321r//emir321r//emir321r//emir321r//emir321r//emir321r//emir321r//emir321r//emir321r//emir321r//emir321r//emir321r//emir321r//emir321r
+const { Client, Util } = require("discord.js");//emir321r//emir321r//emir321r//emir321r//emir321r//emir321r//emir321r
+const weather = require("weather-js");//emir321r//emir321r//emir321r//emir321r//emir321r//emir321r//emir321r
+const fs = require("fs");//emir321r//emir321r//emir321r//emir321r//emir321r//emir321r//emir321r
+const db = require("quick.db");//emir321r//emir321r//emir321r//emir321r//emir321r//emir321r//emir321r
+const http = require("http");//emir321r//emir321r//emir321r//emir321r//emir321r//emir321r//emir321r
+const express = require("express");//emir321r//emir321r//emir321r//emir321r//emir321r//emir321r//emir321r
+require("./util/eventLoader.js")(client);//emir321r//emir321r//emir321r//emir321r//emir321r//emir321r//emir321r
+const path = require("path");//emir321r//emir321r//emir321r//emir321r//emir321r//emir321r//emir321r
+const request = require("request");//emir321r//emir321r//emir321r//emir321r//emir321r//emir321r//emir321r
+const snekfetch = require("snekfetch");//emir321r//emir321r//emir321r//emir321r//emir321r//emir321r//emir321r
+const queue = new Map();//emir321r//emir321r//emir321r//emir321r//emir321r//emir321r//emir321r
+const YouTube = require("simple-youtube-api");//emir321r//emir321r//emir321r//emir321r//emir321r//emir321r//emir321r
+const ytdl = require("ytdl-core");//emir321r//emir321r//emir321r//emir321r//emir321r//emir321r//emir321r
 
-const app = express();
-app.get("/", (request, response) => {
-  console.log(Date.now() + "PİNG PONG");
-  response.sendStatus(200);//emir321r
+const app = express();//emir321r//emir321r//emir321r//emir321r//emir321r//emir321r//emir321r
+app.get("/", (request, response) => {//emir321r//emir321r//emir321r//emir321r//emir321r//emir321r//emir321r
+  console.log(Date.now() + "PİNG PONG");//emir321r//emir321r//emir321r//emir321r//emir321r//emir321r//emir321r
+  response.sendStatus(200);//emir321r//emir321r//emir321r//emir321r//emir321r//emir321r//emir321r//emir321r
 });
 app.listen(process.env.PORT);
 setInterval(() => {//emir321r
