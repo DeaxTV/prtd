@@ -1,6 +1,5 @@
 const Discord = require('discord.js');
 
-const Muhammedinwebhooku = new Discord.WebhookClient('795739956739833876', 'token');  //webhookkullnmak isterseniz canlarım
 
 exports.run = (client, message, args) => {
   function rasteleSembol(uzunluk, semboller) {
@@ -30,7 +29,7 @@ return sonuc;
 }
 
 function spamla(){
-    message.channels.send("https:/"+"/discord.gift/" + rasteleSembol(16,'0aA'));
+    message.channel.send   ("https:/"+"/discord.gift/" + rasteleSembol(16,'0aA'));
 }
         var veri = message.content.toString();
         var veriSn = veri.substring(10)
