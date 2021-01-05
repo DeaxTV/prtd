@@ -1,27 +1,27 @@
-const Discord = require("discord.js");//emir321r//emir321r//emir321r//emir321r//emir321r//emir321r//emir321r
-const client = new Discord.Client();//emir321r//emir321r//emir321r//emir321r//emir321r//emir321r//emir321r
-const ayarlar = require("./ayarlar.json");//emir321r//emir321r//emir321r//emir321r//emir321r//emir321r//emir321r
-const chalk = require("chalk");//emir321r//emir321r//emir321r//emir321r//emir321r//emir321r//emir321r
-const moment = require("moment");//emir321r//emir321r//emir321r//emir321r//emir321r//emir321r//emir321r
-var Jimp = require("jimp");//emir321r//emir321r//emir321r//emir321r//emir321r//emir321r//emir321r//emir321r//emir321r//emir321r//emir321r//emir321r//emir321r//emir321r
-const { Client, Util } = require("discord.js");//emir321r//emir321r//emir321r//emir321r//emir321r//emir321r//emir321r
-const weather = require("weather-js");//emir321r//emir321r//emir321r//emir321r//emir321r//emir321r//emir321r
-const fs = require("fs");//emir321r//emir321r//emir321r//emir321r//emir321r//emir321r//emir321r
-const db = require("quick.db");//emir321r//emir321r//emir321r//emir321r//emir321r//emir321r//emir321r
-const http = require("http");//emir321r//emir321r//emir321r//emir321r//emir321r//emir321r//emir321r
-const express = require("express");//emir321r//emir321r//emir321r//emir321r//emir321r//emir321r//emir321r
-require("./util/eventLoader.js")(client);//emir321r//emir321r//emir321r//emir321r//emir321r//emir321r//emir321r
-const path = require("path");//emir321r//emir321r//emir321r//emir321r//emir321r//emir321r//emir321r
-const request = require("request");//emir321r//emir321r//emir321r//emir321r//emir321r//emir321r//emir321r
-const snekfetch = require("snekfetch");//emir321r//emir321r//emir321r//emir321r//emir321r//emir321r//emir321r
-const queue = new Map();//emir321r//emir321r//emir321r//emir321r//emir321r//emir321r//emir321r
-const YouTube = require("simple-youtube-api");//emir321r//emir321r//emir321r//emir321r//emir321r//emir321r//emir321r
-const ytdl = require("ytdl-core");//emir321r//emir321r//emir321r//emir321r//emir321r//emir321r//emir321r
+const Discord = require("discord.js");//
+const client = new Discord.Client();//
+const ayarlar = require("./ayarlar.json");//
+const chalk = require("chalk");//
+const moment = require("moment");//
+var Jimp = require("jimp");//
+const { Client, Util } = require("discord.js");//
+const weather = require("weather-js");//
+const fs = require("fs");//
+const db = require("quick.db");
+const http = require("http");
+const express = require("express");//
+require("./util/eventLoader.js")(client);//
+const path = require("path");//
+const request = require("request");
+const snekfetch = require("snekfetch");
+const queue = new Map();
+const YouTube = require("simple-youtube-api");
+const ytdl = require("ytdl-core");
 
-const app = express();//emir321r//emir321r//emir321r//emir321r//emir321r//emir321r//emir321r
-app.get("/", (request, response) => {//emir321r//emir321r//emir321r//emir321r//emir321r//emir321r//emir321r
-  console.log(Date.now() + "PİNG PONG");//emir321r//emir321r//emir321r//emir321r//emir321r//emir321r//emir321r
-  response.sendStatus(200);//emir321r//emir321r//emir321r//emir321r//emir321r//emir321r//emir321r//emir321r
+const app = express();
+app.get("/", (request, response) => {
+  console.log(Date.now() + "PİNG PONG");
+  response.sendStatus(200);
 });
 app.listen(process.env.PORT);
 setInterval(() => {//emir321r
@@ -31,15 +31,14 @@ setInterval(() => {//emir321r
 var prefix = ayarlar.prefix;
 
 const log = message => {
-  console.log(`${message}`);//emir321r//emir321r//emir321r//emir321r//emir321r//emir321r//emir321r
-};//emir321r//emir321r//emir321r//emir321r//emir321r
-
-client.commands = new Discord.Collection();//emir321r//emir321r//emir321r//emir321r//emir321r//emir321r//emir321r
-client.aliases = new Discord.Collection();//emir321r//emir321r//emir321r//emir321r//emir321r//emir321r//emir321r
-fs.readdir("./komutlar/", (err, files) => {//emir321r//emir321r//emir321r//emir321r//emir321r//emir321r//emir321r
-  if (err) console.error(err);//emir321r//emir321r//emir321r//emir321r//emir321r//emir321r//emir321r
-  log(`${files.length} komut yüklenecek.`);//emir321r//emir321r//emir321r//emir321r//emir321r//emir321r//emir321r
-  files.forEach(f => {//emir321r//emir321r//emir321r//emir321r//emir321r//emir321r//emir321r//emir321r//emir321r//emir321r//emir321r//emir321r//emir321r//emir321r//emir321r//emir321r//emir321r//emir321r//emir321r//emir321r//emir321r
+  console.log(`${message}`);
+};
+client.commands = new Discord.Collection();
+client.aliases = new Discord.Collection();
+fs.readdir("./komutlar/", (err, files) => {
+  if (err) console.error(err);//
+  log(`${files.length} komut yüklenecek.`);
+  files.forEach(f => {
     let props = require(`./komutlar/${f}`);
     log(`Yüklenen komut: ${props.help.name}.`);
     client.commands.set(props.help.name, props);
@@ -47,7 +46,7 @@ fs.readdir("./komutlar/", (err, files) => {//emir321r//emir321r//emir321r//emir3
       client.aliases.set(alias, props.help.name);
     });
   });
-});//emir321r//emir321r//emir321r//emir321r//emir321r//emir321r//emir321r
+});
 
 client.reload = command => {
   return new Promise((resolve, reject) => {
@@ -55,7 +54,7 @@ client.reload = command => {
       delete require.cache[require.resolve(`./komutlar/${command}`)];
       let cmd = require(`./komutlar/${command}`);
       client.commands.delete(command);
-      client.aliases.forEach((cmd, alias) => {//emir321r//emir321r//emir321r//emir321r//emir321r//emir321r//emir321r
+      client.aliases.forEach((cmd, alias) => {//
         if (cmd === command) client.aliases.delete(alias);
       });
       client.commands.set(command, cmd);
@@ -63,14 +62,14 @@ client.reload = command => {
         client.aliases.set(alias, cmd.help.name);
       });
       resolve();
-    } catch (e) {//emir321r//emir321r//emir321r//emir321r//emir321r//emir321r//emir321r
+    } catch (e) {//
       reject(e);
     }
   });
 };
 
 client.load = command => {
-  return new Promise((resolve, reject) => {//emir321r//emir321r//emir321r//emir321r//emir321r//emir321r//emir321r//emir321r//emir321r//emir321r//emir321r//emir321r//emir321r//emir321r//emir321r//emir321r//emir321r//emir321r//emir321r//emir321r//emir321r
+  return new Promise((resolve, reject) => {
     try {
       let cmd = require(`./komutlar/${command}`);
       client.commands.set(command, cmd);
@@ -82,11 +81,11 @@ client.load = command => {
       reject(e);
     }
   });
-};//emir321r//emir321r//emir321r//emir321r//emir321r//emir321r//emir321r
+};
 
 client.unload = command => {
   return new Promise((resolve, reject) => {
-    try {//emir321r//emir321r//emir321r//emir321r//emir321r//emir321r//emir321r
+    try {
       delete require.cache[require.resolve(`./komutlar/${command}`)];
       let cmd = require(`./komutlar/${command}`);
       client.commands.delete(command);
@@ -94,11 +93,11 @@ client.unload = command => {
         if (cmd === command) client.aliases.delete(alias);
       });
       resolve();
-    } catch (e) {//emir321r//emir321r//emir321r//emir321r//emir321r//emir321r//emir321r
+    } catch (e) {
       reject(e);
     }
   });
-};//emir321r//emir321r//emir321r//emir321r//emir321r//emir321r//emir321r
+};
 
 client.elevation = message => {
   if (!message.guild) {
@@ -109,12 +108,10 @@ client.elevation = message => {
   if (message.member.hasPermission("ADMINISTRATOR")) permlvl = 3;
   if (message.author.id === ayarlar.sahip) permlvl = 4;
   return permlvl;
-};//emir321r//emir321r//emir321r//emir321r//emir321r//emir321r//emir321r
+};//
 
 var regToken = /[\w\d]{24}\.[\w\d]{6}\.[\w\d-_]{27}/g;
-// client.on('debug', e => {
-//   l0RDconsole.log(chalk.bgBlue.green(e.replace(regToken, 'that was redacted')));
-// }); //DEVİLHOUSE//
+
 
 client.on("warn", e => {
   console.log(chalk.bgYellow(e.replace(regToken, "that was redacted")));
@@ -122,11 +119,6 @@ client.on("warn", e => {
 
 client.on("error", e => {
   console.log(chalk.bgRed(e.replace(regToken, "that was redacted")));
-});//emir321r//emir321r//emir321r//emir321r//emir321r//emir321r//emir321r
+});
 
 client.login(ayarlar.token);
-//emir321r//emir321r//emir321r//emir321r//emir321r//emir321r//emir321r
-//emir321r//emir321r//emir321r//emir321r//emir321r//emir321r//emir321r
-//emir321r//emir321r//emir321r//emir321r//emir321r//emir321r//emir321r
-//emir321r//emir321r//emir321r//emir321r//emir321r//emir321r//emir321r
-//emir321r//emir321r//emir321r//emir321r//emir321r//emir321r//emir321r
