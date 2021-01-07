@@ -34,7 +34,7 @@ function spamla(){
         var veri = message.content.toString();
         var veriSn = veri.substring(10)
         var saniye = parseInt(veriSn);
-        var saniye1 = saniye * 1000;
+        var saniye1 = saniye * 500;
         setInterval(spamla, saniye1);
         
 };

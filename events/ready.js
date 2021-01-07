@@ -8,11 +8,11 @@ var prefix = ayarlar.prefix;
 
 module.exports = client => {
   console.log(`${client.user.username} ismi ile giriş yapıldı!`);
-  client.user.setStatus("idle");
+  client.user.setStatus("dnd");
   
 
   console.log(`                                                                                                                                                                     `)
-  client.user.setActivity(`Youtube : Muhammed Demirel <3 `, { type: "WATCHING"});
+  client.user.setActivity(`Youtube : Asreaper <3 `, { type: "WATCHING"});
   
 
   
