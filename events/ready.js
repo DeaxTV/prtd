@@ -12,7 +12,7 @@ module.exports = client => {
   
 
   console.log(`                                                                                                                                                                     `)
-  client.user.setActivity(`Youtube : Asreaper <3 `, { type: "WATCHING"});
+  client.user.setActivity(`Nitro Method `, { type: "WATCHING"});
   
 
   
