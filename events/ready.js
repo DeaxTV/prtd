@@ -12,7 +12,7 @@ module.exports = client => {
   
 
   console.log(`                                                                                                                                                                     `)
-  client.user.setActivity(`Nitro Method `, { type: "WATCHING"});
+  client.user.setActivity(`gg./wisa `, { type: "WATCHING"});
   
 
   
