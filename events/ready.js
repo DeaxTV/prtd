@@ -12,7 +12,7 @@ module.exports = client => {
   
 
   console.log(`                                                                                                                                                                     `)
-  client.user.setActivity(`gg./wisa `, { type: "WATCHING"});
+  client.user.setActivity(`deatloxt `, { type: "WATCHING"});
   
 
   
