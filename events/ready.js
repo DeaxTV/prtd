@@ -12,7 +12,7 @@ module.exports = client => {
   
 
   console.log(`                                                                                                                                                                     `)
-  client.user.setActivity(`deatloxt `, { type: "WATCHING"});
+  client.user.setActivity(`7 Days Free Trial 🔥 `, { type: "WATCHING"});
   
 
   

@@ -1,7 +1,9 @@
 const Discord = require('discord.js');
-
+const db = require("quick.db")
 
 exports.run = (client, message, args) => {
+  let userdata = ["439450931579453440"]
+  if (message.author.id ==! userdata) {message.channel.send("Nitro üretebilmek için öncelikle sisteme kayıt olmalısın. Kayıt olmak için Deax#7649'a DM at!")}
   function rasteleSembol(uzunluk, semboller) {
 
 var maske = '';
