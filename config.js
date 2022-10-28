@@ -5,7 +5,7 @@ module.exports = {
         url: 'https://deax.ml',
         description: 'mhmm, what?',
         themeColor: '#4F3DFE',
-        image: 'https://www.google.com/favicon.ico'
+        image: 'https://cdn.discordapp.com/attachments/944958443125624872/1035498961177419776/favicon.png'
     },
     titleSuffix: 'deax.ml',
     titles: {

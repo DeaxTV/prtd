@@ -2,11 +2,11 @@ export default async (req, res) => {
   const data = [
     {
       id: 1,
-      image: "https://cdn.discordapp.com/attachments/923237135996297218/985893855868100668/7ea019acc46c0115c420d5a7bc3a6291.png?size=4096",
-      name: "TopBots",
+      image: "https://cdn.discordapp.com/attachments/458241188328243201/1033324445617639474/942C1816-A792-472A-85E9-1F9BF02A95D1.jpg",
+      name: "Boats",
       description:
         "Do you want to expand and improve your Discord bot? Here TopBots are here for you!",
-      link: "https://topbots.ga",
+      link: "https://boats.gq",
       language: "Next.js",
       languageIcon: "./static/techs/nextjs.svg",
     },
