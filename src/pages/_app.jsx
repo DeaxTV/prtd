@@ -1,48 +1,49 @@
-import Header from '../components/Static/Header'
-import '../../public/styles/globals.css'
-import Head from 'next/head';
-import 'tippy.js/animations/shift-away.css';
-import Footer from '../components/Static/Footer';
-import { useState, useEffect } from 'react';
-import { useRouter } from 'next/router';
-import Progress from '../libraries/progress';
-import config from '../../config';
+import Navbar from 'components/Static/Navbar'
+import { PageProvider } from 'context/page'
+import { ThemeProvider } from 'context/theme'
+import 'styles/globals.css'
+import "react-multi-carousel/lib/styles.css";
+import { useEffect } from 'react';
+import Footer from 'components/Static/Footer';
+import CustomCursor from 'components/Global/Cursor';
+import ContextMenu, { Item } from 'components/Global/ContextMenu';
+import Key from 'components/Global/Key';
 
 function MyApp({ Component, pageProps }) {
 
-  const betters = [
-    'design',
-    'write',
-    'develop',
-    'moderate'
-  ];
-  let [better, setBetter] = useState(betters[Math.floor(Math.random() * betters.length)]);
-  useEffect(() => { setBetter(better) }, [better]);
-  const router = useRouter();
   return <>
-  <Head>
-    <title>
-      {router.asPath ? (
-        config?.titles[router?.asPath] ? (
-          config?.titles[router?.asPath] + ' | ' + config?.titleSuffix
-        ) : 'Blank | deax.ml'
-      ) : 'Loading... | deax.ml'}
-    </title>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  </Head>
-    <Header />
-    <Progress />
-    <main style={{ zIndex: 2 }} className="pt-36 relative min-h-screen">
-      <Component better={better} {...pageProps} />
-    </main>
-    {router.asPath === '/' && (
-      <>
-        <div style={{ zIndex: 1 }} className="hidden lg:block absolute layout-colored-background" />
-        <div style={{ zIndex: 1 }} className="hidden lg:block bottom-0 rotate-[96deg] fixed layout-colored-background" />
-      </>
-    )}
-    
-    <Footer better={better} />
+    <ThemeProvider>
+      <PageProvider>
+        <main>
+          <head>
+            <title>clqu | Full-stack Developer</title>
+          </head>
+          <CustomCursor />
+          <ContextMenu
+            content={event => <>
+              <div>
+                {event.hasBack && (<Item icon={<i className="fa fa-arrow-left" />} text="Back" kbd={["Alt", "◀"]} onClick={event.goBack} />)}
+                {event.hasForward && (<Item icon={<i className="fa fa-arrow-right" />} text="Forward" kbd={["Alt", "▶"]} onClick={event.goForward} />)}
+                <Item icon={<i className="fa fa-redo" />} text="Refresh" kbd={["Ctrl", "R"]} onClick={event.refreshPage} />
+              </div>
+
+              <div className="pt-2">
+                <Item icon={<i className="fa fa-code" />} text="View Source" onClick={event.viewSource} />
+              </div>
+            </>}
+          >
+            <Navbar />
+            <main className="min-h-[67vh] px-6 lg:px-0">
+              <Component {...pageProps} />
+            </main>
+            <Footer />
+          </ContextMenu>
+
+          <div className="color-layout layout-purple position-right-top" />
+          <div className="color-layout layout-blue position-left-bottom" />
+        </main>
+      </PageProvider>
+    </ThemeProvider>
   </>
 }
 

@@ -1,121 +1,94 @@
-import { useState, useEffect } from "react"
-import { base, contactHook } from "../../config";
+import { usePage } from 'context/page'
+import useSWR from 'hooks/useSWR'
+import Head from 'next/head'
+import Image from 'next/image'
+import { Transition, Dialog } from '@headlessui/react'
+import { Fragment, useState } from 'react'
+import clquConfig from '../../clqu.config'
+import Button from 'components/Global/Button'
+import Carousel from "react-multi-carousel";
+import Input from 'components/Global/Input'
+import axios from 'axios'
 
-export default function Projects() {
-    const inputs = [
-      {
-        id: 'username',
-        icons: {
-          default: 'fal fa-user',
-          active: 'fa fa-user'
-        },
-        placeholder: 'deax',
-        type: 'input'
-      },
-      {
-        id: 'email',
-        icons: {
-          default: 'fal fa-envelope',
-          active: 'fa fa-envelope'
-        },
-        placeholder: 'no-reply@example.com',
-        type: 'input'
-      },
-      {
-        id: 'content',
-        icons: {
-          default: 'fal fa-text',
-          active: 'fa fa-text'
-        },
-        placeholder: 'Helloooo',
-        type: 'textarea'
-      },
-    ]
-    let [activeInput, setActiveInput] = useState();
-    let [submited, setSubmited] = useState(false);
-    useEffect(() => { setActiveInput(activeInput) }, [activeInput]);
+export default function About() {
+    const { page } = usePage();
+    let [error, setError] = useState(false);
+    let [success, setSuccess] = useState(false);
+    let [loading, setLoading] = useState(false);
 
+    const Submit = async (e) => {
+        e.preventDefault();
+        const form = e.target;
 
-    const getInputClasses = (input) => {
-      let activeClasses = 'w-[100%] bg-zinc-100 border rounded-lg outline-none border-cIndigo/100 text-cIndigo transition-border duration-200'
-      let defaultClasses = 'w-[100%] bg-zinc-100 border rounded-lg outline-none border-cIndigo/20 transition-border duration-200'
-      if(input?.id === activeInput?.id) return activeClasses;
-      return defaultClasses;
+        setLoading(true);
+
+        setTimeout(() => {
+            axios.post('/api/contact', {
+                name: form.name.value,
+                email: form.email.value,
+                message: form.message.value
+            }).then(res => {
+                setLoading(false);
+                let data = res.data;
+                if (data.success) {
+                    setSuccess(true);
+                    let subject = data.data.subject;
+                    let body = data.data.body;
+
+                    window.open(`mailto:${clquConfig.email}?subject=${subject}&body=${body}`, '_blank', 'noopener,noreferrer')
+                } else {
+                    setSuccess(false);
+                    setError(data.message);
+                }
+            }).catch(err => {
+                setLoading(false);
+                let data = err.response.data;
+                setSuccess(false);
+                setError(data.message);
+            })
+        }, 1000);
     }
-    const getInputIcon = (input) => {
-      if(input?.id === activeInput?.id) return input?.icons?.active;
-      return input?.icons?.default;
-    }
 
-    const submitContact = e => {
-      e.preventDefault();
-      setSubmited(true);
-      setTimeout(async() => {
-        let email = e?.target?.email?.value;
-        let username = e?.target?.username?.value;
-        let content = e?.target?.content?.value;
-        await fetch(base+'/api/contact', {
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/json'
-          },
-          body: JSON.stringify({
-            username: username,
-            email: email,
-            content: content
-          })
-        }).then(r => {
-          if(r) {
-            setSubmited(false);
-          } else {
-            setSubmited(false);
-          }
-        })
-      }, 2500);
-    }
     return <>
-    
-    <div className="px-6 lg:px-36 h-full py-36 pt-24">
-        <div id="title-repos" className="relative">
-          <p style={{ zIndex: 2 }} className="relative ml-2 text-3xl lg:text-6xl font-semibold">Contact</p>
-          <p className="absolute bottom-5 opacity-10 ml-2 text-8xl font-semibold">Say Hello</p>
-          <div className="h-6 w-1/2 -mt-4 opacity-20 bg-cIndigo rounded-xl" />
-        </div>
-        <div className="grid grid-cols-1 md:grid-cols-2 divide-x divide-gray-200 h-full w-full gap-6 mt-6">
-          <div className="w-full">
-            <form onSubmit={submitContact} className="w-full space-y-4" autoComplete="off">
-              {inputs.map((input, index) => (
-                <>
-                  <div className={`flex ${input.type === 'input' && 'items-center'} ${getInputClasses(input)}`}>
-                      <i className={getInputIcon(input) + ' py-5 px-6'} />
-                      {input.type === 'input' ? (
-                          <input autoComplete="off" id={input?.id} name={input?.id} placeholder={input?.placeholder} onFocus={() => setActiveInput(input)} onBlur={() => setActiveInput()} className={'bg-transparent px-2 py-3 outline-none h-full w-full'} />
-                        ) : (
-                            <textarea autoComplete="off" id={input?.id} name={input?.id} placeholder={input?.placeholder} onFocus={() => setActiveInput(input)} onBlur={() => setActiveInput()} rows={5} maxLength={2000} className={'bg-transparent px-2 py-4 outline-none h-full w-full'} />
-                      )}
-                  </div>
-                </>
-              ))}
-              <button type={'submit'} disabled={submited} className="text-center w-48 text-white cursor-pointer transition-all duration-200 bg-cIndigo hover:opacity-90 px-6 py-2 rounded-md">
-                  {submited ? <i className="fal fa-spinner-third fa-spin" /> : 'Submit'}
-              </button>
-            </form>
-          </div>
-          <div>
-            <div className="space-y-4 p-4">
-                <p className="text-xl font-semibold">Contact with...</p>
-                <a href={'mailto:deaxlive@gmail.com'} className="flex justify-between cursor-pointer hover:bg-zinc-300/50 transition-all duration-200 items-center bg-zinc-100 px-4 py-2 rounded-xl">
-                  <p className="text-xl">Email</p>
-                  <i className="fa fa-envelope text-2xl" />
-                </a>
-                <a href={'https://discord.gg/WD3jjxkxZa'} target="_blank" className="flex justify-between cursor-pointer hover:bg-zinc-300/50 transition-all duration-200 items-center bg-zinc-100 px-4 py-2 rounded-xl">
-                  <p className="text-xl">Discord</p>
-                  <i className="fab fa-discord text-2xl" />
-                </a>
-            </div>
-          </div>
+        <div className="max-w-7xl mx-auto">
+            <div className="flex justify-between w-full h-full py-24 gap-24">
+                <div className="w-full">
+                    <form onSubmit={Submit}>
+                        <h1 className="text-4xl font-bold">Contact</h1>
+                        <p className="text-sm mt-1 text-gray-500">
+                            <i className="fa fa-envelope" /> {clquConfig.email}
+                        </p>
+                        <div className="flex flex-col gap-4 mt-4">
+                            <Input name="name" placeholder="Username" startsWith={<i className="fa fa-user" />} />
+                            <Input name="email" placeholder="Email" startsWith={<i className="fa fa-envelope" />} />
+                            <Input name="message" wrapper="textarea" placeholder="Message" startsWith={<i className="fa fa-comment" />} />
+                        </div>
 
+                        <div className="flex items-center gap-4 justify-between mt-4">
+                            {!success && !error && <div />}
+                            {!success && error && <p className="bg-red-500/5 px-4 py-2 rounded-lg shadow-xl text-red-500 italic flex items-center gap-2">
+                                <i className="fa fa-exclamation-circle" />
+                                {error}
+                            </p>}
+                            {success && <p className="bg-green-500/5 px-4 py-2 rounded-lg shadow-xl text-green-500 italic flex items-center gap-2">
+                                <i className="fa fa-check-circle" />
+                                Message sent successfully
+                                </p>}
+
+                            <Button disabled={loading} className={`flex items-center gap-4 ${loading && 'opacity-50 cursor-not-allowed'}`}>
+                                {loading && <i className="fal fa-spinner-third fa-spin" />}
+                                {!loading && (
+                                    <>
+                                        <i className="fa fa-paper-plane" />
+                                        Send
+                                    </>
+                                )}
+                            </Button>
+                        </div>
+                    </form>
+                </div>
+            </div>
         </div>
-      </div>
+
     </>
 }
