@@ -16,7 +16,7 @@ function MyApp({ Component, pageProps }) {
       <PageProvider>
         <main>
           <head>
-            <title>clqu | Full-stack Developer</title>
+            <title>deax</title>
           </head>
           <CustomCursor />
           <ContextMenu
