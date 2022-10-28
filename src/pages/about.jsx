@@ -21,7 +21,7 @@ export default function About() {
                         I am a 2nd year high school student, I have been dealing with software for about 4 years.
                         I started with JS, developed with Minecraft Plugins and made my biggest improvement with the latest Discord bot.
                         Since then, software has been more of a hobby for me than a dream, I spent days developing my hobby, I tried to improve my software knowledge for at least 10 hours a day in 1 year, finally here I am.
-                        Thank you for reading <i className="fal fa-heart text-cyan-400" />
+                        Thank you for reading <i className="fal fa-heart text-blue-400" />
                     </p>
                     
                 </div>
