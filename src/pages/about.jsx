@@ -17,11 +17,11 @@ export default function About() {
                 <div>
                     <h1 className="text-4xl font-bold">Who Am <span className="relative whitespace-nowrap text-primary">I</span>?</h1>
                     <p className="text-xl mt-1">
-                        Hello, Im clqu. I am 16 years old.
-                        I am a 3rd year high school student, I have been dealing with software for about 3 years.
-                        I started with PHP, developed with Minecraft Plugins and made my biggest improvement with the latest Discord bot.
+                        Hello, Im deax. I am 15 years old.
+                        I am a 2nd year high school student, I have been dealing with software for about 4 years.
+                        I started with JS, developed with Minecraft Plugins and made my biggest improvement with the latest Discord bot.
                         Since then, software has been more of a hobby for me than a dream, I spent days developing my hobby, I tried to improve my software knowledge for at least 10 hours a day in 1 year, finally here I am.
-                        Thank you for reading <i className="fa fa-heart" />
+                        Thank you for reading <i className="fal fa-heart mx-1 text-cyan-400" />
                     </p>
                     
                 </div>
