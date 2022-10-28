@@ -21,12 +21,12 @@ export default function About() {
                         I am a 2nd year high school student, I have been dealing with software for about 4 years.
                         I started with JS, developed with Minecraft Plugins and made my biggest improvement with the latest Discord bot.
                         Since then, software has been more of a hobby for me than a dream, I spent days developing my hobby, I tried to improve my software knowledge for at least 10 hours a day in 1 year, finally here I am.
-                        Thank you for reading <i className="fal fa-heart mx-1 text-cyan-400" />
+                        Thank you for reading <i className="fal fa-heart text-cyan-400" />
                     </p>
                     
                 </div>
                 <div className="relative flex-shrink-0">
-                    <img src="https://softwareer.net/avatars/clqu" style={{ zIndex: 1 }} className="relative shadow-xl z-1 w-full lg:w-64 h-full lg:h-64 rounded-full lg:rounded-lg" />
+                    <img src="https://cdn.discordapp.com/avatars/439450931579453440/e19a1b849c43b451a2dbb130a6683dc6.webp?size=512" style={{ zIndex: 1 }} className="relative shadow-xl z-1 w-full lg:w-64 h-full lg:h-64 rounded-full lg:rounded-lg" />
                     <div className="-right-3 top-3 absolute w-full h-full top-0 right-0 border-4 rounded-full lg:rounded-lg border-primary bg-gradient-to-t from-primary" />
                 </div>
             </div>
