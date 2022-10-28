@@ -10,14 +10,6 @@ import clquConfig from "../../../clqu.config";
 export default function Navbar() {
     const router = useRouter();
     let [isOpen, setMenu] = useState(false);
-   const [scrolled, setScrolled] = useState({currentScrollHeight: 0});
-    useEffect(() => {
-        window.onscroll =()=>{
-            const newScrollHeight = Math.ceil(window.scrollY / 50) *50;
-            if (scrolled != newScrollHeight){
-                setScrolled({currentScrollHeight: newScrollHeight})
-            }
-          }
     const { data: $socials } = useSWR('/api/socials');
     const socials = $socials?.data;
 
@@ -70,8 +62,17 @@ export default function Navbar() {
         }
         setMenu(value);
     }
-
+    const [scrolled, setScrolled] = useState({currentScrollHeight: 0});
+    useEffect(() => {
+        window.onscroll =()=>{
+            const newScrollHeight = Math.ceil(window.scrollY / 50) *50;
+            if (scrolled != newScrollHeight){
+                setScrolled({currentScrollHeight: newScrollHeight})
+            }
+          }
+    }, []);
     return <>
+      <div style={{ zIndex: 99 }} id="header-clqu" className={`${scrolled?.currentScrollHeight > 70 && '!py-4 shadow-xl bg-white'} fixed px-6 lg:px-36 py-12 w-full transition-all duration-200`}>
         <div className="max-w-7xl mx-auto py-12 w-full px-6 lg:px-0">
             <div className="flex items-center justify-between">
                 <div className="flex items-center gap-4">
@@ -88,7 +89,7 @@ export default function Navbar() {
                 </div>
             </div>
         </div>
-
+  </div>
         <Transition
             show={isOpen}
             appear
