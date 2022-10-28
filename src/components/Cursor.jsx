@@ -1,19 +1,13 @@
-import getImage from 'util/getImage';
-const Cursor = () => {
-const dot = useRef(null);
-const dotOutline = useRef(null);
-const list = useRef(null) ;
+
+const Cursor = (O => {
+const delay = 18;
+const cursorVisible = useRef(true);
+const cursorEnlarged = useRef (false);
+const endX = useRef (window. innerWidth / 2);
+const endY = useRef(window.innerHeight / 2);
+const _x = useRef(0) ;
+const _y = useRef(0);
+const requestRef = useRef(null);
 return(
-  <>
-<div ref={dotOutline} className="cursor-dot-outline"></div>
-<div ref={dot} className="cursor-dot"></div>
-       
-<div ref={list} className="links-container">
-{[...Array(4).keys()].map(i =>(
-<Link key={i} src={getImage(i + 1)} />
-                          ))}
-</div>
-</>
-                  );
-                  };
-export default Cursor;
+  {/* JSX */}
+  );}
