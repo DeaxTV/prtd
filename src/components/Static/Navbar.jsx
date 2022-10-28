@@ -72,7 +72,7 @@ export default function Navbar() {
           }
     }, []);
     return <>
-      <div style={{ zIndex: 99 }} id="header-clqu" className={`${scrolled?.currentScrollHeight > 70 && '!py-4 shadow-xl bg-white'} fixed px-6 lg:px-36 py-12 w-full transition-all duration-200`}>
+      <div style={{ zIndex: 99 }} id="header-clqu" className={`${scrolled?.currentScrollHeight > 70 && '!py-4 shadow-xl bg-white dark:bg-black'} fixed px-6 lg:px-36 py-12 w-full transition-all duration-200`}>
         <div className="max-w-7xl mx-auto py-12 w-full px-6 lg:px-0">
             <div className="flex items-center justify-between">
                 <div className="flex items-center gap-4">
