@@ -46,13 +46,6 @@ export default function Home() {
           <span className="text-primary uppercase">Repositories</span>
           <p className="text-gray-500 dark:text-gray-300 font-semibold text-xl">{repositories?.length}+</p>
         </div>
-        <iframe
-    src="https://linkcord.js.org/api/v3/widget/{your_id}?type=spotify_small"
-    width="150"
-    height="150"
-    allowtransparency="true"
-    frameborder="0"
-/>
       </div>
     </div>
     <div className="mx-auto max-w-7xl my-24">
