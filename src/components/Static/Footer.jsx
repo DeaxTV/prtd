@@ -8,7 +8,7 @@ const Footer = ({ better }) => {
         <div className="lg:flex justify-between w-full">
           <Link href="/">
             <p className="cursor-pointer flex items-center font-semibold text-2xl">
-              <span className="bg-zinc-200 text-xs px-2 py-1 mr-2 rounded-lg">v2.0</span>deax
+              <span className="bg-zinc-200 text-xs px-2 py-1 mr-2 rounded-lg">v3.0</span>deax
               <span style={{ zIndex: 4 }} className="relative text-cIndigo">
                 .
               </span>
@@ -27,7 +27,7 @@ const Footer = ({ better }) => {
                 !!!!!!!!!!!!!!!!!!!!!!!!!!!!
                 */}
                 <p>
-                    Developed with ❤️ by clqu & edited by deax
+                    Developed with 💙 by clqu & deax
                 </p>
             </div>
           </div>

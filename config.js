@@ -7,7 +7,7 @@ module.exports = {
         themeColor: '#4F3DFE',
         image: 'https://cdn.discordapp.com/attachments/944958443125624872/1035498961177419776/favicon.png'
     },
-    titleSuffix: 'deax.ml',
+    titleSuffix: 'Deax',
     titles: {
         '/': 'Home',
         '/projects': 'Projects',
