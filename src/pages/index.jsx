@@ -29,13 +29,6 @@ export default function Home() {
       <p className="mx-auto max-w-4xl font-display text-2xl text-gray-500/50 text-center">
         A full-stack developer
       </p>
-            <iframe
-    src="https://linkcord.js.org/api/v3/widget/439450931579453440?type=spotify_large"
-    width="700"
-    height="150"
-    allowtransparency="true"
-    frameborder="0"
-/>
       <div className="w-full lg:w-auto grid grid-cols-1 lg:grid-cols-4 gap-4 mt-24">
         <div className="rounded-lg border-2 border-gray-500/10 border-dotted px-4 py-2 text-center">
           <span className="text-primary uppercase">Technologies</span>
@@ -53,6 +46,13 @@ export default function Home() {
           <span className="text-primary uppercase">Repositories</span>
           <p className="text-gray-500 dark:text-gray-300 font-semibold text-xl">{repositories?.length}+</p>
         </div>
+        <iframe
+    src="https://linkcord.js.org/api/v3/widget/{your_id}?type=spotify_small"
+    width="150"
+    height="150"
+    allowtransparency="true"
+    frameborder="0"
+/>
       </div>
     </div>
     <div className="mx-auto max-w-7xl my-24">
