@@ -10,7 +10,7 @@ export default (req, res) => {
         });
     }
 
-    let mailTo = "me@clqu.live";
+    let mailTo = "deaxhelp@gmail.com";
     let mailSubject = "Contact Form Submission";
 
     let mailBody = `
