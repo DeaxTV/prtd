@@ -1,0 +1,21 @@
+{
+  "/_app": "pages/_app.js",
+  "/_error": "pages/_error.js",
+  "/_document": "pages/_document.js",
+  "/about": "pages/about.html",
+  "/api/contact": "pages/api/contact.js",
+  "/api/lanyard": "pages/api/lanyard.js",
+  "/api/post": "pages/api/post.js",
+  "/api/posts": "pages/api/posts.js",
+  "/api/profile": "pages/api/profile.js",
+  "/api/project": "pages/api/project.js",
+  "/api/projects": "pages/api/projects.js",
+  "/api/repos": "pages/api/repos.js",
+  "/api/skills": "pages/api/skills.js",
+  "/api/socials": "pages/api/socials.js",
+  "/contact": "pages/contact.html",
+  "/": "pages/index.html",
+  "/posts": "pages/posts.html",
+  "/projects": "pages/projects.html",
+  "/post/[id]": "pages/post/[id].js"
+}
